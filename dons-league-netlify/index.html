@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>THE DONs LEAGUE — Manager</title>
+  <link rel="stylesheet" href="league.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="crest">D</div>
+        <div>
+          <h1>THE DONs LEAGUE</h1>
+          <p class="tag">Manage teams • schedule • results</p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <input id="searchInput" placeholder="Search team or date (YYYY-MM-DD)..." />
+        <label class="theme-toggle">
+          <input id="themeToggle" type="checkbox" />
+          <span>Dark</span>
+        </label>
+      </div>
+    </header>
+
+    <main>
+      <section class="grid">
+        <!-- Teams -->
+        <div class="card">
+          <h2>Teams</h2>
+          <form id="teamForm" class="row">
+            <input id="teamName" placeholder="Team name" required />
+            <input id="teamColor" type="color" value="#d4af37" title="Team color"/>
+            <input id="teamLogo" type="file" accept="image/*" />
+            <button type="submit" class="btn gold">Add Team</button>
+          </form>
+
+          <ul id="teamList" class="list"></ul>
+        </div>
+
+        <!-- Schedule / create match -->
+        <div class="card">
+          <h2>Schedule Match</h2>
+          <form id="matchForm" class="col">
+            <div class="row">
+              <select id="homeSelect"></select>
+              <select id="awaySelect"></select>
+            </div>
+
+            <div class="row">
+              <input id="matchDate" type="date" />
+              <input id="matchTime" type="time" />
+            </div>
+
+            <div class="row">
+              <button type="submit" class="btn gold">Schedule</button>
+              <button type="button" id="generateBtn" class="btn">Auto Fixtures</button>
+            </div>
+          </form>
+
+          <div class="filters">
+            <label>From <input id="filterFrom" type="date" /></label>
+            <label>To <input id="filterTo" type="date" /></label>
+            <label><input id="onlyUpcoming" type="checkbox" checked/> Only upcoming</label>
+          </div>
+
+          <h3>Upcoming Matches</h3>
+          <ul id="scheduleList" class="list"></ul>
+        </div>
+
+        <!-- Completed & Table -->
+        <div class="card full">
+          <div class="row header-row">
+            <h2>Standings</h2>
+            <div class="small-muted">Auto-updates when results entered</div>
+          </div>
+
+          <div class="table-wrap">
+            <table id="standings">
+              <thead>
+                <tr><th>#</th><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <h3>Completed Matches</h3>
+          <ul id="completedList" class="list"></ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- Edit Match Modal -->
+    <div id="modal" class="modal hidden">
+      <div class="modal-card">
+        <h3>Edit Match</h3>
+        <form id="editForm" class="col">
+          <select id="editHome"></select>
+          <select id="editAway"></select>
+          <input id="editDate" type="date" />
+          <input id="editTime" type="time" />
+          <div class="row">
+            <button type="submit" class="btn gold">Save</button>
+            <button type="button" id="modalClose" class="btn muted">Cancel</button>
+            <button type="button" id="markComplete" class="btn">Mark Complete</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer class="footer">THE DONs LEAGUE • Built for dominance • Author: FRANZZAY/FRANCIS</footer>
+  </div>
+
+  <script src="league.js"></script>
+</body>
+</html>
